@@ -6,6 +6,8 @@ module.exports = {
   ],
   theme: {
     extend: {
+      opacity:["disabled"],
+      cursor: ["disabled"],
       maxWidth : {
         "8xl": "1920px"
       }
