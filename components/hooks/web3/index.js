@@ -9,14 +9,23 @@ const enahcneHook = swrRes => {
 
 export const useAccount = () => {
     const swrRes = enahcneHook(useHooks(hooks => hooks.useAccount)())
-    return {
-        account : swrRes
-    }
+    return swrRes
 }
 
 export const useNetwork = () => {
     const swrRes = enahcneHook(useHooks(hooks => hooks.useNetwork)())
     return {
         network : swrRes
+    }
+}
+
+export const useWalletInfo = () => {
+    const { account } = useAccount()
+    const { network } = useNetwork()
+
+    return {
+        account,
+        network,
+        canPurchaseCourse : !!(account.data && network.isSupported)
     }
 }
