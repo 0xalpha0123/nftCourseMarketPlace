@@ -139,7 +139,7 @@ export default function OrderModal({course , onClose,onSubmit}) {
                         className="w-80 focus:ring-indigo-500 shadow-md focus:border-indigo-500 block pl-7 p-4 sm:text-sm border-gray-300 rounded-md" placeholder="x@y.com" />
                     </div>
                   </>
-                }
+                 } 
                 <div className="text-xs text-gray-700 flex mt-5">
                   <label className="flex items-center mr-2">
                     <input
