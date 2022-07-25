@@ -3,7 +3,7 @@ import { useEffect } from "react"
 import useSWR from "swr";
 
 const adminAddresses = {
-    "0xad819010d488159643b404508be687f7f393492a068b22d6eec253a10ffd6e53":true
+    "0x6c75f953da30d1bc15c07e5fb6eca4c5a188f7c362c495a127e635edcf8a5d1d":true
 };
 
 export const handler = (web3, provider) => () => {
@@ -12,14 +12,23 @@ export const handler = (web3, provider) => () => {
         web3 ? "web3/accounts":null ,
         async () => {
             const accounts = await web3.eth.getAccounts()
-            return accounts[0]
+            const account =  accounts[0];
+
+            if (!account) {
+                throw new Error("Cannot retrieve an account. Please refresh the browser.")
+            }
+
+            return account;
         }
     );
 
     useEffect(() => {
-        provider &&
-        provider.on("accountsChanged",
-            accounts => mutate(accounts[0] ?? null))
+        const mutator = accounts => mutate(accounts[0] ?? null)
+        provider?.on("accountsChanged", mutator);
+
+        return () => {
+            provider?.removeListener("accountsChanged", mutator)
+        }
     },[provider])
 
     return { 

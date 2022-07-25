@@ -51,7 +51,7 @@ contract CourseMarketPlace {
             revert("Course has already a Owner!");
         }
 
-        uint id = totalOwnedCourses;
+        uint id = totalOwnedCourses++;
         ownedCourseHash[id] = courseHash;
         ownedCourses[courseHash] = Course({
             id : id,

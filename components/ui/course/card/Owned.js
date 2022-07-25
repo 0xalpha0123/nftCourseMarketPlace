@@ -4,15 +4,11 @@ const STATE_COLORS = {
   purchased: "indigo",
   activated: "green",
   deactivated: "red"
-}
-
+};
 
 export default function OwnedCourseCard({children , course}) {
 
-  console.log("----6-----course--------",course)
-
-  const stateColor = STATE_COLORS[course.state]
-  
+  const stateColor = STATE_COLORS[course.state];
 
   return (
     <div className="bg-white border shadow overflow-hidden sm:rounded-lg mb-3">

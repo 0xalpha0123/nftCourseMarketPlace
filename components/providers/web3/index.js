@@ -75,6 +75,6 @@ export function useWeb3() {
 }
 
 export function useHooks(cb) {
-    const { hooks } = useWeb3()
+    const { hooks } = useWeb3();
     return cb(hooks);
 }
